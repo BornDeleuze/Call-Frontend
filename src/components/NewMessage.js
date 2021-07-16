@@ -1,12 +1,17 @@
 import React from "react";
 import {connect} from 'react-redux';
-import {addNewMessage} from './redux/actions/index.js'
+import {addNewMessage} from '../redux/actions/index.js'
 
 class NewMessage extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            content: ""
+            content: "",
+            user_id: "1"
+
+            /*
+                set USER _ ID to logged in user!
+            */
 
         }
         this.handleChange = this.handleChange.bind(this);
@@ -30,6 +35,7 @@ class NewMessage extends React.Component {
                 <label>
                     <textarea value={this.state.value} onChange={this.handleChange} />
                 </label>
+                <br></br>
                 <input type="submit" value="Send" />
             </form>
         );

@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import '../App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import Conversations from './Conversation';
+import Conversation from './Conversation';
 import Header from './Header';
 import Footer from './Footer';
-import ConversationList from './components/ConverationsList';
+import ConversationList from './ConversationsList';
 
 
 
@@ -12,9 +12,10 @@ function App() {
   return (
     <div>
       <Header/>
+      <ConversationList className="sidebar"/>
       <Router>
         <Switch>
-          <Conversations className=""/>
+          <Conversation className="conversation"/>
         </Switch>
       </Router>
       <Footer/>

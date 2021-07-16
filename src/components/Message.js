@@ -1,14 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 function Message(props) {
-    console.log(props)
-    
-    
-    
-    
-    
-    
-    
+
         return (
             <div>
                 <h4> From: {props.data.sender}</h4>

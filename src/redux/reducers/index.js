@@ -3,7 +3,7 @@ import messages from './messageReducer'
 
 
 export default combineReducers({
-    messages,
+    messages
 
     //ANOTHER REDUCER,
 

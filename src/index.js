@@ -4,11 +4,13 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import store from './redux/store'
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import {createStore, compose, applyMiddleware} from 'redux'
 // import rootReducer from './redux/reducers'
 
-import App from './App';
+import {ActionCableProvider} from 'react-actioncable-provider'
+import { API_WS_ROOT } from './constants';
+import App from './components/App';
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ || compose
 
@@ -17,11 +19,15 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ || compose
 // let store = createStore(rootReducer)
 
 ReactDOM.render(
+  
   <React.StrictMode>
-    <Provider store = {store}>
-      <App />
+    <ActionCableProvider url={API_WS_ROOT}>
+      <Provider store = {store}>
+      
+        <App />
 
-    </Provider>
+      </Provider>
+    </ActionCableProvider>
   </React.StrictMode>,
 
   document.getElementById('root')

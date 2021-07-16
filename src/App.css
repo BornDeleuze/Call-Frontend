@@ -4,3 +4,28 @@
   border-right: 1px solid #3f3f3f;
   height: 100%;
 }
+
+.header{
+  background-color:cadetblue;
+  color:cornsilk;
+  font-family: "Courier New", "Lucida Console", monospace;
+}
+
+.footer{
+  text-align: center;
+  width: 900px;
+  position: absolute;
+  bottom: 0;
+  background-color:blueviolet ;
+  font-family: "Courier New", "Lucida Console", monospace;
+}
+
+.conversation_list {
+  float: left;
+  background-color: #3f3f3f;
+}
+
+.conversation{
+  float: right;
+  background-color:brown;
+}
