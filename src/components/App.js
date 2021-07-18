@@ -5,22 +5,29 @@ import Conversation from './Conversation';
 import Header from './Header';
 import Footer from './Footer';
 import ConversationList from './ConversationsList';
+import FetchConvesations from './FetchConvesations';
 
 
 
+// change to class, to have lifecycle component did mount
 function App() {
+
+
+  //go fetch the all the things in compdidmount
+
+
   return (
-    <div>
+    <>
+      {/* <FetchConvesations/> */}
       <Header/>
-      <ConversationList className="sidebar"/>
-      <Router>
-        <Switch>
-          <Conversation className="conversation"/>
-        </Switch>
-      </Router>
+        <Router>
+          <ConversationList className="sidebar"/>
+          <Switch>
+            <Conversation selectedConvo= "0" className="conversation"/>
+          </Switch>
+        </Router>
       <Footer/>
-      
-    </div>
+    </>
   );
 }
 

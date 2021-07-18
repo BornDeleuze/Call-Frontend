@@ -7,16 +7,19 @@ class NewMessage extends React.Component {
         super(props)
         this.state={
             content: "",
-            user_id: "1"
+            user_id: "1",
+            conversation_id: this.props.selectedConvo
 
             /*
                 set USER _ ID to logged in user!
             */
 
         }
+        console.log(this)
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
 
     handleChange(event) {
         this.setState({content: event.target.value});

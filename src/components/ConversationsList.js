@@ -1,26 +1,76 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { ActionCableConsumer } from 'react-actioncable-provider';
+import Cable from './Cable';
 import { connect } from "react-redux"
-import Conversation from './Conversation'
+import { fetchConversations } from '../redux/actions/index'
 
- ConversationList(props){
+import { API_ROOT } from '/Users/mattb/Flatiron/code/Call/call/src/constants/index.js';
 
-    const allConversations = props.conversationsPortal.map((convo)=>{
-        return <h2 key={convo.name}>{convo.name}</h2>
-        // return <Conversation key={convo.id} convo={convo} />
-    })
-    return(
-    <div className="conversation_list">
-        {allConversations}
-    </div>
-    )
+import NewConversation from './NewConversation';
+
+class ConversationList extends Component{
+    constructor(props){
+        super(props)
+
+        this.state = {
+            conversations: [],
+            selectedConversation: null,
+            hello: ""
+        }
+        this.handleFetchedConversation = this.handleFetchedConversation.bind(this);
+    }
+
+    componentDidMount(){
+        console.log(this.props.conversationsPortal)
+        this.setState({ conversations: this.props.conversationsPortal})
+            // ((convo)=>{ return <h5> key={convo.id} name={convo.name}</h5>})
+        
+        console.log(this.state)
+    }
+
+    // componentDidMount = () => {
+    //     fetch(`${API_ROOT}/conversations`)
+    //         .then(res => res.json())
+    //         .then(convos => this.setState({ conversations: convos }))
+    // };
+      
+    // componentDidMount(){
+        // console.log(this.props)
+        // this.props.fetchConversations()
+    // }
+
+    handleFetchedConversation = response => {
+        const { conversation } = response;
+        this.setState({
+        conversations: [...this.state.conversations, conversation]
+        });
+    };
+
+    
+    render(){
+        const { conversations } = this.state;
+        return(
+            
+        <div className="conversation_list">
+             
+             <ActionCableConsumer
+          channel={{ channel: 'ConversationsChannel' }}
+          onReceived={this.handleFetchedConversation}
+        />
+          <Cable
+            conversations={conversations}
+            handleReceivedConversation={this.handleReceivedConversation}
+          />
+        </div>
+        )
+    }
 }
 
 const mapStateToProps =(state)=>{
     return{ 
             conversationsPortal: state
-            
     }
 }
 
-
 export default connect(mapStateToProps)(ConversationList);
+// export default connect(mapStateToProps, {fetchConversations})(ConversationList);
