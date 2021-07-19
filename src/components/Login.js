@@ -13,6 +13,13 @@ class Login extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    componentDidMount(){
+        if(this.props.location){
+            console.log(this.props)
+            
+        }
+     }
     
     handleChange(event) {
         this.setState({username: event.target.value});
@@ -27,6 +34,7 @@ class Login extends React.Component {
     render(){
         return(
         <div className="login_form">
+            {console.log(this.props)}
             <form onSubmit={this.handleSubmit}>
                 <label>Please Log In</label>
                 <input type="text" value={this.state.value} onChange={this.handleChange} />

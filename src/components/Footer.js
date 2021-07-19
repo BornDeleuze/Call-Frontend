@@ -1,10 +1,16 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 
 function Footer() {
   return (
     <div className="footer">
-        <h1>{/* logout route, login route,  */}</h1>
-      <h3>GOODBYE WORLD</h3>
+
+      <NavLink className="nav_link" to="/login">Login</NavLink>
+      <NavLink className="nav_link" to="/">Home</NavLink>
+      <NavLink className="nav_link" to="/about">About</NavLink>
+      <NavLink className="nav_link" to="/logout">Logout</NavLink>
+      
     </div>
   );
 }

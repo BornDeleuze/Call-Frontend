@@ -11,6 +11,7 @@ import store from './redux/store'
 import {ActionCableProvider} from 'react-actioncable-provider'
 import { API_WS_ROOT } from './constants';
 import App from './components/App';
+import {BrowserRouter as Router} from 'react-router-dom'
 
 
 
@@ -21,11 +22,13 @@ import App from './components/App';
 ReactDOM.render(
   
   <React.StrictMode>
-    <Provider store={store}>
-      <ActionCableProvider url={API_WS_ROOT}>
-        <App/>
-      </ActionCableProvider>
-    </Provider>
+    <ActionCableProvider url={API_WS_ROOT}>
+      <Provider store={store}>
+        <Router>
+          <App/>
+        </Router>
+      </Provider>
+    </ActionCableProvider>
   </React.StrictMode>,
 
   document.getElementById('root')

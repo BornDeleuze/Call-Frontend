@@ -4,6 +4,11 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers'
 
 
+// normal store set-up and export
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
+let store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
+export default store
+
 
 //saga middleware export 
 // function setupStore(initialState){
@@ -16,10 +21,3 @@ import rootReducer from './reducers'
 //     return store
 // }
 // export default setupStore
-
-// normal store set-up and export
-
-
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
-let store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
-export default store

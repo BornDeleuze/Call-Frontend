@@ -24,11 +24,22 @@
   color:cornsilk;
   font-family: "Courier New", "Lucida Console", monospace;
 }
+.nav_link{
+  background-color:blueviolet ;
+  color:cornsilk;
+  font-family: "Courier New", "Lucida Console", monospace;
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+
+}
 
 .footer{
   height:60px;
   text-align: center;
-  width: 900px;
+  width: 100%;
   position: absolute;
   bottom: 0;
   background-color:blueviolet ;
@@ -46,7 +57,12 @@
   width: 150px;
   overflow-y: scroll;
   top: 60px;
-  bottom: 60px;
+  bottom: 63px;
+}
+
+.conversation_list input{
+  width: 135px;
+  text-align: center;
 }
 
 .conversation{

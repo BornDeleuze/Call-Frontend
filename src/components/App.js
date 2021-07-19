@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {BrowserRouter as Router, Redirect, Switch, Route} from 'react-router-dom'
+import { Redirect, Switch, Route} from 'react-router-dom'
 import Conversation from './Conversation';
 import Header from './Header';
 import Footer from './Footer';
@@ -34,24 +34,27 @@ class App extends Component {
     return (
       <>
         <Header/>
-          <Router>
             <Switch>
               {/* <LoginVerification username={this.state.username}/> */}
               
 
               <Route exact path="/login">
-                <Login path="/login" />
+                <Login />
               </Route>
 
               <Route exact path='/'>
-                {this.state.username ? <Redirect to="/login"/>:<h1>hello</h1>}
+                {!this.state.username ? <Redirect to=
+                  {{
+                  pathname: "/login",
+                  state: { alert: "please log in" }
+                  }}
+                />:null}
                 <ConversationList className="sidebar"/>
                 <Conversation selectedConvo= "0" className="conversation"/>
               </Route>
 
             </Switch>
-          </Router>
-        <Footer/>
+          <Footer/>
       </>
     )};
 }

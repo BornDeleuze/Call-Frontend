@@ -13,8 +13,8 @@ const Cable = ({ conversations, handleFetchedMessage }) => {
             channel={{ channel: 'MessagesChannel', conversation: conversation.id }}
             onReceived={handleFetchedMessage}
           />
-
         <NavLink to={url} className="convo_link">{conversation.name}</NavLink>
+        <br></br>
         </>
         );
       })}

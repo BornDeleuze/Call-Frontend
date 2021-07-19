@@ -29,16 +29,16 @@ class ConversationList extends Component{
     }
 
     //simple compdidmount fetch, but not mapping to state
-    // componentDidMount = () => {
-    //     fetch(`${API_ROOT}/conversations`)
-    //         .then(res => res.json())
-    //         .then(convos => this.setState({ conversations: convos }))
-    // };
+    componentDidMount = () => {
+        fetch(`${API_ROOT}/conversations`)
+            .then(res => res.json())
+            .then(convos => this.setState({ conversations: convos }))
+    };
       
-    componentDidMount(){
-        console.log(this.props)
-        this.props.fetchConversations()
-    }
+    // componentDidMount(){
+    //     console.log(this.props)
+    //     this.props.fetchConversations()
+    // }
 
     handleFetchedConversation = response => {
         const { conversation } = response;
@@ -53,11 +53,13 @@ class ConversationList extends Component{
         return(
             
         <div className="conversation_list">
+            <NewConversation/>
              
             <ActionCableConsumer
                 channel={{ channel: 'ConversationsChannel' }}
                 onReceived={this.handleFetchedConversation}
             />
+            <br></br>
             <Cable
                 conversations={conversations}
                 handleReceivedConversation={this.handleReceivedConversation}
