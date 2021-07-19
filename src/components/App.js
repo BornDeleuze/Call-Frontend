@@ -8,7 +8,6 @@ import ConversationList from './ConversationsList';
 import Login from './Login'
 import { API_ROOT } from '../constants';
 import { connect } from "react-redux"
-import { LoginVerification } from './LoginVerification';
 
 class App extends Component {
 
@@ -35,9 +34,6 @@ class App extends Component {
       <>
         <Header/>
             <Switch>
-              {/* <LoginVerification username={this.state.username}/> */}
-              
-
               <Route exact path="/login">
                 <Login />
               </Route>
