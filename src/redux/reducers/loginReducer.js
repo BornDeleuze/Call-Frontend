@@ -2,7 +2,7 @@ export default (state = [], action)=> {
 
     switch(action.type){
 
-        case "FETCH_CONVO":
+        case "LOGIN":
             return [...action.payload]
         
         default: 

@@ -10,15 +10,15 @@ function Conversation(props) {
 
   const selectedConvo = props.selectedConvo
 
-  const allMessages = props.messagePortal[selectedConvo].messages.map((message)=>{  
-    return <Message key={message.id} data={message} /> 
-  })
+  // const allMessages = props.messagePortal[selectedConvo].messages.map((message)=>{  
+  //   return <Message key={message.id} data={message} /> 
+  // })
 
 
   return (
     <div className="conversation">
      
-    {allMessages}
+    {/* {allMessages} */}
 
     <NewMessage selectedConvo={selectedConvo}/>
       

@@ -4,9 +4,9 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import store from './redux/store'
-import {createStore, compose, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk';
-import rootReducer from './redux/reducers'
+// import {createStore, compose, applyMiddleware} from 'redux'
+// import thunk from 'redux-thunk';
+// import rootReducer from './redux/reducers'
 
 import {ActionCableProvider} from 'react-actioncable-provider'
 import { API_WS_ROOT } from './constants';
@@ -21,11 +21,11 @@ import App from './components/App';
 ReactDOM.render(
   
   <React.StrictMode>
-    <ActionCableProvider url={API_WS_ROOT}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <ActionCableProvider url={API_WS_ROOT}>
         <App/>
-      </Provider>
-    </ActionCableProvider>
+      </ActionCableProvider>
+    </Provider>
   </React.StrictMode>,
 
   document.getElementById('root')

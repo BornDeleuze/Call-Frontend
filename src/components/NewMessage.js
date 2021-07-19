@@ -15,9 +15,6 @@ class NewMessage extends React.Component {
             */
 
         }
-        console.log(this)
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
     
 
@@ -41,7 +38,7 @@ class NewMessage extends React.Component {
                 <br></br>
                 <input type="submit" value="Send" />
             </form>
-        );
+        )
     }
 }
 

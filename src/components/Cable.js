@@ -9,11 +9,12 @@ const Cable = ({ conversations, handleFetchedMessage }) => {
         const url = "/conversation"+conversation.id
         return (<>
           <ActionCableConsumer
-            key={conversation.id}  
+            key={conversation.id}
             channel={{ channel: 'MessagesChannel', conversation: conversation.id }}
             onReceived={handleFetchedMessage}
           />
-        <NavLink to={url} className="convo_link"><h5>{conversation.name}</h5></NavLink>  
+
+        <NavLink to={url} className="convo_link">{conversation.name}</NavLink>
         </>
         );
       })}
@@ -22,5 +23,3 @@ const Cable = ({ conversations, handleFetchedMessage }) => {
 };
 
 export default Cable;
-// this code renders the list of conversations but it should not be in cable
-{/* <NavLink to={url} className="convo_link"><h5>{conversation.name}</h5></NavLink> */}

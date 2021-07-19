@@ -7,8 +7,8 @@
 [ ] - There are 5 stateless components *
 
 [ ] - There are 3 routes *
-        /login
-        /conversation - the main app
+       X /login
+       X /home - the main app
         /about
         /logout
 

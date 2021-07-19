@@ -1,34 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../App.css';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Redirect, Switch, Route} from 'react-router-dom'
 import Conversation from './Conversation';
 import Header from './Header';
 import Footer from './Footer';
 import ConversationList from './ConversationsList';
-import FetchConvesations from './FetchConvesations';
+import Login from './Login'
+import { API_ROOT } from '../constants';
+import { connect } from "react-redux"
+import { LoginVerification } from './LoginVerification';
 
+class App extends Component {
 
+  constructor(props){
+    super(props)
 
-// change to class, to have lifecycle component did mount
-function App() {
+    this.state = {
+        conversations: [],
+        selectedConversation: null,
+        username: null
+    }  
+  }
 
+  componentDidMount = () => {
+        fetch(`${API_ROOT}/conversations`)
+            .then(res => res.json())
+            .then(convos => this.setState({ conversations: convos }))
+    };
+  
 
-  //go fetch the all the things in compdidmount
+  render(){
 
+    return (
+      <>
+        <Header/>
+          <Router>
+            <Switch>
+              {/* <LoginVerification username={this.state.username}/> */}
+              
 
-  return (
-    <>
-      {/* <FetchConvesations/> */}
-      <Header/>
-        <Router>
-          <ConversationList className="sidebar"/>
-          <Switch>
-            <Conversation selectedConvo= "0" className="conversation"/>
-          </Switch>
-        </Router>
-      <Footer/>
-    </>
-  );
+              <Route exact path="/login">
+                <Login path="/login" />
+              </Route>
+
+              <Route exact path='/'>
+                {this.state.username ? <Redirect to="/login"/>:<h1>hello</h1>}
+                <ConversationList className="sidebar"/>
+                <Conversation selectedConvo= "0" className="conversation"/>
+              </Route>
+
+            </Switch>
+          </Router>
+        <Footer/>
+      </>
+    )};
 }
 
-export default App;
+const mapStateToProps =(state)=>{
+  return{ 
+          conversationsPortal: state
+  }
+}
+
+export default connect(mapStateToProps)(App);
