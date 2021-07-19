@@ -43,12 +43,12 @@ class App extends Component {
               </Route>
 
               <Route exact path='/'>
-                {!this.state.username ? <Redirect to=
+                {/* {!this.state.username ? <Redirect to=
                   {{
                   pathname: "/login",
                   state: { alert: "please log in" }
                   }}
-                />:null}
+                />:null} */}
                 <ConversationList className="sidebar"/>
                 <Conversation selectedConvo= "0" className="conversation"/>
               </Route>
