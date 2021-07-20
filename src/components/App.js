@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Redirect, Switch, Route} from 'react-router-dom'
+import { API_ROOT } from '../constants';
+import { connect } from "react-redux"
 import Conversation from './Conversation';
 import Header from './Header';
 import Footer from './Footer';
 import ConversationList from './ConversationsList';
 import Login from './Login'
-import { API_ROOT } from '../constants';
-import { connect } from "react-redux"
+import About from './About'
 
 class App extends Component {
 
@@ -21,11 +22,11 @@ class App extends Component {
     }  
   }
 
-  componentDidMount = () => {
-        fetch(`${API_ROOT}/conversations`)
-            .then(res => res.json())
-            .then(convos => this.setState({ conversations: convos }))
-    };
+  // componentDidMount = () => {
+  //       fetch(`${API_ROOT}/conversations`)
+  //           .then(res => res.json())
+  //           .then(convos => this.setState({ conversations: convos }))
+  //   };
   
 
   render(){
@@ -49,16 +50,23 @@ class App extends Component {
                 <Conversation selectedConvo= "0" className="conversation"/>
               </Route>
 
+              <Route exact path='/about'>
+                <About/>
+              </Route>
+
+              <Route exact path='/logout'>
+
+              </Route>
             </Switch>
           <Footer/>
       </>
     )};
 }
 
-const mapStateToProps =(state)=>{
-  return{ 
-          conversationsPortal: state
-  }
-}
+// const mapStateToProps =(state)=>{
+//   return{ 
+//           conversationsPortal: state
+//   }
+// }
 
-export default connect(mapStateToProps)(App);
+export default App;

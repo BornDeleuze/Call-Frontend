@@ -8,7 +8,6 @@ export const login =(username)=>{
 }
 
 export const fetchConversations =()=>{
-    console.log("helloo")
     return (dispatch)=>{
         // console.log("HELLLOOO WE ARE IN THE FETCH FUNCTION")
         fetch(`${API_ROOT}/conversations`)
