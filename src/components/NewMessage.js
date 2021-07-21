@@ -8,7 +8,7 @@ class NewMessage extends React.Component {
         this.state={
             content: "",
             user_id: "1",
-            conversation_id: this.props.selectedConvo
+            conversation_id: this.props.selectedConvo.id
 
             /*
                 set USER _ ID to logged in user!

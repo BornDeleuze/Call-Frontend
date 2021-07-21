@@ -47,7 +47,7 @@ class App extends Component {
                   }}
                 />:null} */}
                 <ConversationList className="sidebar"/>
-                <Conversation selectedConvo= "0" className="conversation"/>
+                {/* <Conversation selectedConvo= "0" className="conversation"/> */}
               </Route>
 
               <Route exact path='/about'>

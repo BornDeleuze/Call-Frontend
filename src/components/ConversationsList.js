@@ -3,6 +3,7 @@ import { ActionCableConsumer } from 'react-actioncable-provider';
 import Cable from './Cable';
 import { connect } from "react-redux"
 import { fetchConversations } from '../redux/actions';
+import Conversation from './Conversation';
 
 import NewConversation from './NewConversation';
 
@@ -16,7 +17,8 @@ class ConversationList extends Component{
             selectedConversation: null,
             hello: ""
         }
-        this.handleFetchedConversation = this.handleFetchedConversation.bind(this);
+        this.handleReceivedConversation = this.handleReceivedConversation.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     
@@ -28,45 +30,83 @@ class ConversationList extends Component{
     //         .then(convos => this.setState({ conversations: convos }))
     // };
     
-
     componentDidMount(){
         this.props.fetchConversations()
+        this.setState({})
     }
 
-    handleFetchedConversation = response => {
-        console.log(response)
+    handleClick(id){
+        this.setState({ selectedConversation: id });
+      };
+
+    handleReceivedConversation = response => {
         const { conversation } = response;
         this.setState({
-        conversations: [...this.state.conversations, conversation]
+        conversations: [...this.state.conversations ,conversation]
         });
     };
 
+    // componentDidUpdate(){
+    //     console.log(this.state)
+    // }
+
+    handleReceivedMessage = response => {
+        const { message } = response;
+        const conversations = [...this.state.conversations];
+        const conversation = conversations.find(
+          conversation => conversation.id === message.conversation_id
+        );
+        conversation.messages = [...conversation.messages, message];
+        this.setState({ conversations });
+    };
     
     render(){
-        const { conversations } = this.state;
+        const { conversations, selectedConversation } = this.state;
         return(
+           
+        <>
+            <div className="conversation_list">
+                
+                <ActionCableConsumer
+                    channel={{ channel: 'ConversationsChannel' }}
+                    onReceived={this.handleReceivedConversation}
+                />
+                <div>{listConversations(this.props.conversations, this.handleClick)}</div>
+                
+                <Cable
+                    conversations={conversations}
+                    handleReceivedMessage={this.handleReceivedMessage}
+                />
+                <NewConversation/>
+            </div>
             
-        <div className="conversation_list">
-            
-            <ActionCableConsumer
-                channel={{ channel: 'ConversationsChannel' }}
-                onReceived={this.handleFetchedConversation}
-            />
-            <br></br>
-            <Cable
-                conversations={conversations}
-                handleReceivedConversation={this.handleReceivedConversation}
-          />
-          <NewConversation/>
-        </div>
+            {selectedConversation ? (
+                <Conversation selectedConversation={selectedConversation}/>
+            ):(
+                <div className="conversation">
+                <h4>please select a conversation on the left</h4>
+                </div>
+            )}
+        </>
         )
     }
 }
 
 const mapStateToProps =(state)=>{
     return{ 
-            conversationsPortal: state
+            // conversationsPortal: state
+            conversations: state.conversations
     }
+}
+
+const listConversations = (conversations, handleClick) => {
+    return conversations.map(convo => {
+      return (
+        <h5 key={convo.id} onClick={() => handleClick(convo.id)}>
+          {convo.name}
+        </h5>
+      );
+    });
 }
 
 // use this with simple fetch in compdidmount

@@ -68,11 +68,13 @@
 .conversation{
   border-radius: 10px;
   float: right;
-  width:400px;
+  min-width: 400px;
   background-color:brown;
   overflow-y: scroll;
   top: 60px;
   bottom: 60px;
+  height: 475px;
+  margin-left: 175px;
 }
 
 .convo_link{

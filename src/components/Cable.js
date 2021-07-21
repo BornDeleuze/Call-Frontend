@@ -1,20 +1,17 @@
 import React from 'react';
 import { ActionCableConsumer } from 'react-actioncable-provider';
-import { NavLink } from 'react-router-dom';
 
-const Cable = ({ conversations, handleFetchedMessage }) => {
+
+const Cable = ({ conversations, handleReceivedMessage }) => {
   return (
     <>
       {conversations.map(conversation => {
-        const url = "/conversation"+conversation.id
         return (<>
           <ActionCableConsumer
             key={conversation.id}
             channel={{ channel: 'MessagesChannel', conversation: conversation.id }}
-            onReceived={handleFetchedMessage}
+            onReceived={handleReceivedMessage}
           />
-        <NavLink to={url} className="convo_link">{conversation.name}</NavLink>
-        <br></br>
         </>
         );
       })}
