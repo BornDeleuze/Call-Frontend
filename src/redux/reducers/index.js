@@ -5,10 +5,10 @@ import login from './loginReducer'
 
 
 export default combineReducers({
-    // messages,
+    messages,
 
     login,
-
+    
     conversations
 
 })

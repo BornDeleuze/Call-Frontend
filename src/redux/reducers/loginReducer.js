@@ -3,7 +3,8 @@ export default (state = [], action)=> {
     switch(action.type){
 
         case "LOGIN":
-            return [...action.payload]
+            console.log(action.payload)
+            return [...state, action.payload]
         
         default: 
             return state

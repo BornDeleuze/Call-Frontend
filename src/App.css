@@ -9,6 +9,8 @@
   margin-left: -100px;
   border-radius: 10px;
   text-align: center;
+  color:cornsilk; 
+  font-family: "Courier New", "Lucida Console", monospace;
 }
 
 .sidebar {
@@ -21,7 +23,7 @@
 
 .header{
   background-color:cadetblue;
-  color:cornsilk;
+  color:cornsilk; 
   font-family: "Courier New", "Lucida Console", monospace;
 }
 .nav_link{
@@ -75,7 +77,14 @@
   bottom: 60px;
   height: 475px;
   margin-left: 175px;
+  scroll-snap-type: y proximity;
+  
 }
+.message_form {
+  scroll-snap-align: end;
+  
+}
+
 
 .convo_link{
   color: aliceblue;

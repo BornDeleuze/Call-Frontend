@@ -1,12 +1,12 @@
 import React from "react";
 import {connect} from 'react-redux';
-// import {addNewMessage} from '../redux/actions/index.js'
+import {addNewConversation} from '../redux/actions/index.js'
 
 class NewConversation extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            receiver: "Receiver",
+            // receiver: "Receiver",
             user_id: "1",
             conversationName: "Conversation Name"
 
@@ -21,7 +21,8 @@ class NewConversation extends React.Component {
 
     handleChange(event) {
         console.log(event.target.value)
-        this.setState({receiver: event.target.value,
+        this.setState({
+            // [event.target.receiver]: event.target.value,
             [event.target.name]: event.target.value
         });
         
@@ -29,7 +30,7 @@ class NewConversation extends React.Component {
     
     handleSubmit=(event)=> {
         event.preventDefault();
-        // this.props.addNewMessage( this.state )
+        this.props.addNewConversation( this.state )
 
         // this.setState({value: ""});
     }
@@ -37,12 +38,12 @@ class NewConversation extends React.Component {
             return (
             <form onSubmit={this.handleSubmit} className="new_conversation">
                 <label>
-                    <input 
+                    {/* <input 
                         type="text" 
-                        name= "reveiver" 
+                        name= "receiver" 
                         value={this.state.receiver} 
                         onChange={this.handleChange} 
-                    />
+                    /> */}
 
                     <input 
                     type="text" 
@@ -59,5 +60,5 @@ class NewConversation extends React.Component {
     }
 }
 
-// export default connect(null, {addNewMessage})(NewConversation)
-export default connect(null)(NewConversation)
+export default connect(null, {addNewConversation})(NewConversation)
+// export default connect(null)(addNewConversation)

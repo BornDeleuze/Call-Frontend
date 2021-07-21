@@ -22,13 +22,6 @@ class App extends Component {
     }  
   }
 
-  // componentDidMount = () => {
-  //       fetch(`${API_ROOT}/conversations`)
-  //           .then(res => res.json())
-  //           .then(convos => this.setState({ conversations: convos }))
-  //   };
-  
-
   render(){
 
     return (
@@ -47,7 +40,6 @@ class App extends Component {
                   }}
                 />:null} */}
                 <ConversationList className="sidebar"/>
-                {/* <Conversation selectedConvo= "0" className="conversation"/> */}
               </Route>
 
               <Route exact path='/about'>

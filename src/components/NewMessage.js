@@ -26,13 +26,12 @@ class NewMessage extends React.Component {
     handleSubmit=(event)=> {
         event.preventDefault();
         console.log(this.state)
-        this.props.addNewMessage( this.state )
-
+        this.props.addNewMessage(this.state)
         this.setState({value: ""});
     }
     render(){
             return (
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="message_form">
                 <label>
                     <textarea value={this.state.value} onChange={this.handleChange} />
                 </label>

@@ -5,7 +5,7 @@ import {login} from '../redux/actions/index.js'
 class Login extends React.Component {
 
     constructor(){
-        console.log("hello this is login page")
+        
         super()
         this.state={
             username: null
@@ -22,6 +22,7 @@ class Login extends React.Component {
      }
     
     handleChange(event) {
+        console.log(event.target.value)
         this.setState({username: event.target.value});
     }
 
@@ -34,9 +35,10 @@ class Login extends React.Component {
     render(){
         return(
         <div className="login_form">
-            {console.log(this.props)}
             <form onSubmit={this.handleSubmit}>
+                <br></br>
                 <label>Please Log In</label>
+                <br></br><br></br><br></br>
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
                 
                 <br></br>

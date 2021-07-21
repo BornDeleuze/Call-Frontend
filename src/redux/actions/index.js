@@ -2,14 +2,22 @@ import { API_ROOT } from '/Users/mattb/Flatiron/code/Call/call/src/constants/ind
 // import store from '/Users/mattb/Flatiron/code/Call/call/src/index.js'
 
 export const login =(username)=>{
-    return{
-        type: "LOGIN", payload: username
+    return(dispatch) => {
+        return fetch('http://localhost:3000/users', {
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({name: username})
+        })
+        .then(response => response.json())
+        .then(response=> console.log(response))
+        .then(user => {
+            dispatch({ type: 'LOGIN', payload: user })
+        })
     }
 }
 
 export const fetchConversations =()=>{
     return (dispatch)=>{
-        // console.log("HELLLOOO WE ARE IN THE FETCH FUNCTION")
         fetch(`${API_ROOT}/conversations`)
         .then(resp => resp.json())
         .then(conversations => { 
@@ -21,13 +29,29 @@ export const fetchConversations =()=>{
 }
 
 export const addNewConversation =(conversation)=>{
-    return{
-        type: "ADD_CONVERSATION", payload: conversation
+    return(dispatch) => {
+        return fetch('http://localhost:3000/conversations', {
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({conversation: conversation})
+        })
+        .then(response => response.json())
+        .then(newConversation => {
+            dispatch({ type: 'ADD_CONVERSATION', payload: newConversation })
+        })
     }
 }
 
-export const addNewMessage =(message)=>{
-    return{
-        type: "ADD_MESSAGE", payload: message
+export const addNewMessage = (newMessage) => {
+    return(dispatch) => {
+        return fetch('http://localhost:3000/messages', {
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({message: newMessage})
+        })
+        .then(response => response.json())
+        .then(newMessage => {
+            dispatch({ type: 'ADD_MESSAGE', payload: newMessage })
+        })
     }
 }

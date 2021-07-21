@@ -7,9 +7,10 @@ export default (state = [], action)=> {
         case "FETCH_CONVO":
             return [...action.payload]
         
-        // case "ADD_CONVERSATION":
-        //     return [...state, addNewMessage()]
+        case "ADD_CONVERSATION":
+            return [...state, action.payload]
 
+        
         default: 
             return state
     }

@@ -2,24 +2,25 @@
 
 [X] - create-react-app was used to create your React app *
 
-[ ] - There are 2 container components *
+[X] - There are 2 container components *
+        conversationlist, login, newconversation, newmessage
 
-[ ] - There are 5 stateless components *
-
-[ ] - There are 3 routes *
+[X] - There are 5 stateless components *
+        about, cable, conversation, footer, header, message
+[X] - There are 3 routes *
        X /login
        X /home - the main app
-        /about
+       X /about
         /logout
 
-[ ] - react-router is being used with proper RESTful routing *
+[X] - react-router is being used with proper RESTful routing *
 
-[ ] - Redux and redux-thunk middleware are being used to modify state change and make use of async actions to send data and receive data from the server *
+[X] - Redux and redux-thunk middleware are being used to modify state change and make use of async actions to send data and receive data from the server *
 
 [X] - Use of Rails API backend to persist data for the application *
 
-[ ] - Good understanding of the react/redux state flow *
+[X] - Good understanding of the react/redux state flow *
 
-[ ] - Good understanding of state and props in React *
+[X] - Good understanding of state and props in React *
 
-[ ] - Knowledge of async JS with Promises *
+[X] - Knowledge of async JS with Promises *
