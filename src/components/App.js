@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Redirect, Switch, Route} from 'react-router-dom'
+import { connect } from "react-redux"
 import Header from './Header';
 import Footer from './Footer';
 import ConversationList from './ConversationsList';
@@ -13,11 +14,15 @@ class App extends Component {
     super(props)
 
     this.state = {
-        conversations: [],
-        selectedConversation: null,
-        username: null
+        // conversations: [],
+        
+        user: this.props.user
     }  
   }
+
+  componentDidMount(){
+    
+}
 
   render(){
 
@@ -30,6 +35,7 @@ class App extends Component {
               </Route>
 
               <Route exact path='/'>
+              {console.log(this)}
                 {/* {!this.state.username ? <Redirect to=
                   {{
                   pathname: "/login",
@@ -51,11 +57,12 @@ class App extends Component {
       </>
     )};
 }
+const mapStateToProps =(state)=>{
+  return{ 
+          user: state.user
+  }
+}
 
-// const mapStateToProps =(state)=>{
-//   return{ 
-//           conversationsPortal: state
-//   }
-// }
+export default connect(mapStateToProps)(App);
 
-export default App;
+// export default App;

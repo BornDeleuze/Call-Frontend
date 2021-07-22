@@ -9,7 +9,7 @@ export const login =(username)=>{
             body: JSON.stringify({name: username})
         })
         .then(response => response.json())
-        .then(response=> console.log(response))
+        // .then(response=> console.log(response))
         .then(user => {
             dispatch({ type: 'LOGIN', payload: user })
         })

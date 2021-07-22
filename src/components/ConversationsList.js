@@ -23,7 +23,7 @@ class ConversationList extends Component{
     
     componentDidMount(){
         this.props.fetchConversations()
-        this.setState({})
+        // this.setState({})
     }
 
     handleClick(id){
@@ -95,8 +95,5 @@ const listConversations = (conversations, handleClick) => {
       );
     });
 }
-
-// use this with simple fetch in compdidmount
-// export default connect(mapStateToProps)(ConversationList);
 
 export default connect(mapStateToProps, {fetchConversations})(ConversationList);

@@ -9,16 +9,6 @@ import { API_WS_ROOT } from './constants';
 import App from './components/App';
 import {BrowserRouter as Router} from 'react-router-dom'
 
-/*  for store in index js, currently in './redux/store.js'
-import {createStore, compose, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk';
-import rootReducer from './redux/reducers'
-
-
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
-let store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
-let store = createStore(rootReducer)
-*/
 ReactDOM.render(
   
   <React.StrictMode>
