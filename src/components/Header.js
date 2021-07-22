@@ -1,11 +1,20 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 
 
 function Header() {
   return (
     <div className="header">
-      <h1>WELCOME TO CALL</h1>
+      <NavLink 
+        to="/"
+        activeStyle={{
+          color: "#fff8dc"
+        }}
+        >
+        <h1>CALL</h1> 
+      </NavLink>
+
+      
     </div>
   );
 }

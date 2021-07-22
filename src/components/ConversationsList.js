@@ -20,15 +20,6 @@ class ConversationList extends Component{
         this.handleReceivedConversation = this.handleReceivedConversation.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
-
-    
-
-    //simple compdidmount fetch
-    // componentDidMount = () => {
-    //     fetch(`${API_ROOT}/conversations`)
-    //         .then(res => res.json())
-    //         .then(convos => this.setState({ conversations: convos }))
-    // };
     
     componentDidMount(){
         this.props.fetchConversations()
@@ -45,10 +36,6 @@ class ConversationList extends Component{
         conversations: [...this.state.conversations ,conversation]
         });
     };
-
-    // componentDidUpdate(){
-    //     console.log(this.state)
-    // }
 
     handleReceivedMessage = response => {
         const { message } = response;

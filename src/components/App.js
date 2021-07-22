@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Redirect, Switch, Route} from 'react-router-dom'
-import { API_ROOT } from '../constants';
-import { connect } from "react-redux"
-import Conversation from './Conversation';
 import Header from './Header';
 import Footer from './Footer';
 import ConversationList from './ConversationsList';
