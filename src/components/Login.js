@@ -18,24 +18,14 @@ class Login extends React.Component {
     componentDidMount(){
         
     }
-    
-    // componentDidUpdate(){
-    //     if (this.props.username){
-    //         console.log(this.props.username)
-    //         return(
-    //         <Redirect to="/" />
-    //         )
-    //     }
-    // }
 
     handleChange(event) {
-        console.log(event.target.value)
+        // console.log(event.target.value)
         this.setState({username: event.target.value});
     }
 
     handleSubmit=(event)=> {
         event.preventDefault();
-        console.log(this.state)
         this.props.login(this.state)
     }
     
@@ -51,14 +41,13 @@ class Login extends React.Component {
                 <br></br>
                 <input type="submit" value="Send" />
             </form>
-             {this.props.user ? <Redirect to={{pathname: "/", user: this.props.user}} />:null}
+            {this.props.user ? <Redirect to={{pathname: "/"}} />:null}
         </div>
         )
     }
 }
 
 const mapStateToProps =(state)=>{
-    console.log(state)
     return{ 
             user: state.login.user
     }

@@ -7,13 +7,8 @@ class NewConversation extends React.Component {
         super(props)
         this.state={
             // receiver: "Receiver",
-            user_id: "1",
-            conversationName: "Conversation Name"
-
-            /*
-                set USER _ ID to logged in user!
-            */
-
+            user_id: this.props.user.id,
+            name: "Conversation Name"
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -22,7 +17,6 @@ class NewConversation extends React.Component {
     handleChange(event) {
         console.log(event.target.value)
         this.setState({
-            // [event.target.receiver]: event.target.value,
             [event.target.name]: event.target.value
         });
         
@@ -31,8 +25,7 @@ class NewConversation extends React.Component {
     handleSubmit=(event)=> {
         event.preventDefault();
         this.props.addNewConversation( this.state )
-
-        // this.setState({value: ""});
+        this.setState({name: ""});
     }
     render(){
             return (
@@ -47,8 +40,8 @@ class NewConversation extends React.Component {
 
                     <input 
                     type="text" 
-                    name= "conversationName"
-                    value={this.state.conversationName} 
+                    name= "name"
+                    value={this.state.name} 
                     onChange={this.handleChange} 
                     />
 
@@ -60,5 +53,10 @@ class NewConversation extends React.Component {
     }
 }
 
-export default connect(null, {addNewConversation})(NewConversation)
-// export default connect(null)(addNewConversation)
+const mapStateToProps =(state)=>{
+    return{ 
+        user: state.login.user
+    }
+}
+
+export default connect(mapStateToProps, {addNewConversation})(NewConversation)

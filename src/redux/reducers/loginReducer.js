@@ -5,9 +5,8 @@ export default (state = {
     switch(action.type){
 
         case "LOGIN":
-            console.log(action.payload)
             return {user: action.payload}
-        
+
         default: 
             return state
     }

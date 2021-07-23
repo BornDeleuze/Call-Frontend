@@ -7,12 +7,8 @@ class NewMessage extends React.Component {
         super(props)
         this.state={
             content: "",
-            user_id: "1",
+            user_id: this.props.user.id,
             conversation_id: this.props.selectedConvo.id
-
-            /*
-                set USER _ ID to logged in user!
-            */
 
         }
         this.handleChange = this.handleChange.bind(this);
@@ -25,7 +21,6 @@ class NewMessage extends React.Component {
     
     handleSubmit=(event)=> {
         event.preventDefault();
-        console.log(this.state)
         this.props.addNewMessage(this.state)
         this.setState({value: ""});
     }
@@ -42,4 +37,11 @@ class NewMessage extends React.Component {
     }
 }
 
-export default connect(null, {addNewMessage})(NewMessage)
+const mapStateToProps =(state)=>{
+    console.log(state)
+    return{ 
+        user: state.login.user
+    }
+  }
+
+export default connect(mapStateToProps, {addNewMessage})(NewMessage)

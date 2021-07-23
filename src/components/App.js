@@ -7,7 +7,7 @@ import Footer from './Footer';
 import ConversationList from './ConversationsList';
 import Login from './Login'
 import About from './About'
-
+import Logout from './Logout';
 class App extends Component {
 
   constructor(props){
@@ -18,11 +18,8 @@ class App extends Component {
         
         user: this.props.user
     }  
-  }
 
-  componentDidMount(){
-    
-}
+  }
 
   render(){
 
@@ -35,22 +32,20 @@ class App extends Component {
               </Route>
 
               <Route exact path='/'>
-              {console.log(this)}
-                {/* {!this.state.username ? <Redirect to=
+                {this.props.user==="" ? <Redirect to=
                   {{
                   pathname: "/login",
                   state: { alert: "please log in" }
                   }}
-                />:null} */}
+                />:null}
                 <ConversationList className="sidebar"/>
               </Route>
 
               <Route exact path='/about'>
                 <About/>
               </Route>
-
               <Route exact path='/logout'>
-
+                  <Logout/>
               </Route>
             </Switch>
           <Footer/>
@@ -59,10 +54,8 @@ class App extends Component {
 }
 const mapStateToProps =(state)=>{
   return{ 
-          user: state.user
+      user: state.login.user
   }
 }
 
 export default connect(mapStateToProps)(App);
-
-// export default App;

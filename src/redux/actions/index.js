@@ -9,7 +9,6 @@ export const login =(username)=>{
             body: JSON.stringify({name: username})
         })
         .then(response => response.json())
-        // .then(response=> console.log(response))
         .then(user => {
             dispatch({ type: 'LOGIN', payload: user })
         })
@@ -28,12 +27,12 @@ export const fetchConversations =()=>{
     }
 }
 
-export const addNewConversation =(conversation)=>{
+export const addNewConversation =(newConversation)=>{
     return(dispatch) => {
         return fetch('http://localhost:3000/conversations', {
             method: 'POST', 
             headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify({conversation: conversation})
+            body: JSON.stringify({conversation: newConversation})
         })
         .then(response => response.json())
         .then(newConversation => {
@@ -50,8 +49,17 @@ export const addNewMessage = (newMessage) => {
             body: JSON.stringify({message: newMessage})
         })
         .then(response => response.json())
-        .then(newMessage => {
-            dispatch({ type: 'ADD_MESSAGE', payload: newMessage })
-        })
+        .then(response=>console.log(response))
+        // .then(newMessage => {
+        //     dispatch({ type: 'ADD_MESSAGE', payload: newMessage })
+        // })
     }
 }
+
+export function logout() {
+    return {
+        type: "LOGOUT" 
+    }
+}
+
+
