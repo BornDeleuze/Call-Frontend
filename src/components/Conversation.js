@@ -5,10 +5,8 @@ import { connect } from "react-redux"
 
 function Conversation(props) {
   
-    // selectedConvo into an actual selected message
-    // gotta get the conversation ID, and the sender_id
     const selectedConvoIndex = props.selectedConversation - 1
-    // const convo = props.messagePortal.conversations.filter(convo=>convo.id===selectedConvoNumber)
+    
     const convo = props.messagePortal.conversations[selectedConvoIndex]
     
 

@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import { ActionCableConsumer } from 'react-actioncable-provider';
 import Cable from './Cable';
 import { connect } from "react-redux"
-import { fetchConversations } from '../redux/actions';
+import { addConversationToRedux, addMessageToRedux, fetchConversations } from '../redux/actions';
 import Conversation from './Conversation';
-
 import NewConversation from './NewConversation';
 
 class ConversationList extends Component{
@@ -23,7 +22,9 @@ class ConversationList extends Component{
     
     componentDidMount(){
         this.props.fetchConversations()
-        // this.setState({})
+        this.setState({
+            conversations: this.props.conversations
+        })
     }
 
     handleClick(id){
@@ -32,19 +33,13 @@ class ConversationList extends Component{
 
     handleReceivedConversation = response => {
         const { conversation } = response;
-        this.setState({
-        conversations: [...this.state.conversations ,conversation]
-        });
+        addConversationToRedux(conversation)
     };
 
     handleReceivedMessage = response => {
         const { message } = response;
-        const conversations = [...this.state.conversations];
-        const conversation = conversations.find(
-          conversation => conversation.id === message.conversation_id
-        );
-        conversation.messages = [...conversation.messages, message];
-        this.setState({ conversations });
+        console.log(message)
+        addMessageToRedux(message)
     };
     
     render(){
@@ -88,6 +83,7 @@ const mapStateToProps =(state)=>{
 
 const listConversations = (conversations, handleClick) => {
     return conversations.map(convo => {
+        // console.log(convo)
       return (
         <h5 key={convo.id} onClick={() => handleClick(convo.id)}>
           {convo.name}

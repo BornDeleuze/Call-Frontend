@@ -6,7 +6,6 @@ class NewConversation extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            // receiver: "Receiver",
             user_id: this.props.user.id,
             name: "Conversation Name"
         }

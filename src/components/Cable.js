@@ -4,7 +4,7 @@ import { ActionCableConsumer } from 'react-actioncable-provider';
 
 const Cable = ({ conversations, handleReceivedMessage }) => {
   return (
-    <>
+    <>{console.log(conversations)}
       {conversations.map(conversation => {
         return (<>
           <ActionCableConsumer

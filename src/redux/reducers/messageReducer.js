@@ -6,7 +6,7 @@ export default ( state = {
     switch(action.type){
         
         case "ADD_MESSAGE":
-            console.log(state, action.payload)
+            console.log("this is the reducer")
             return {...state, messages:action.payload};
 
         default: 

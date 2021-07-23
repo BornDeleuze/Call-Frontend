@@ -3,12 +3,12 @@ import messages from './messageReducer'
 import conversations from './conversationReducer'
 import login from './loginReducer'
 
-const initialState = {
-    login: {
-        user:""
-    },
+// const initialState = {
+//     login: {
+//         user:""
+//     },
     
-  }
+//   }
 
 
 const appReducer =  combineReducers({
