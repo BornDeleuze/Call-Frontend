@@ -4,19 +4,22 @@ import { ActionCableConsumer } from 'react-actioncable-provider';
 
 const Cable = ({ conversations, handleReceivedMessage }) => {
   return (
-    <>{console.log(conversations)}
+    <>
       {conversations.map(conversation => {
         return (<>
           <ActionCableConsumer
             key={conversation.id}
-            channel={{ channel: 'MessagesChannel', conversation: conversation.id }}
-            onReceived={handleReceivedMessage}
+            channel={{ key: conversation.id, channel: 'MessagesChannel', id: conversation.id }}
+            // onReceived={console.log("HELLLOOOO")}
+            onReceived={(data) => handleReceivedMessage(data)}
           />
+          {/* {console.log(conversation.id)} */}
         </>
         );
       })}
     </>
   );
 };
+
 
 export default Cable;

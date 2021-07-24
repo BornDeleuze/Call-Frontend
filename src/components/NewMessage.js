@@ -12,6 +12,7 @@ class NewMessage extends React.Component {
 
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     
 
@@ -22,13 +23,13 @@ class NewMessage extends React.Component {
     handleSubmit=(event)=> {
         event.preventDefault();
         this.props.addNewMessage(this.state)
-        this.setState({value: ""});
+        this.setState({content: ""});
     }
     render(){
             return (
                 <form onSubmit={this.handleSubmit} className="message_form">
                 <label>
-                    <textarea value={this.state.value} onChange={this.handleChange} />
+                    <textarea value={this.state.content} onChange={this.handleChange} />
                 </label>
                 <br></br>
                 <input type="submit" value="Send" />

@@ -13,7 +13,7 @@ class ConversationList extends Component{
         this.state = {
             // username: "",
             conversations: [],
-            selectedConversation: null,
+            selectedConversationId: null,
             hello: ""
         }
         this.handleReceivedConversation = this.handleReceivedConversation.bind(this);
@@ -28,7 +28,7 @@ class ConversationList extends Component{
     }
 
     handleClick(id){
-        this.setState({ selectedConversation: id });
+        this.setState({ selectedConversationId: id });
       };
 
     handleReceivedConversation = response => {
@@ -38,12 +38,11 @@ class ConversationList extends Component{
 
     handleReceivedMessage = response => {
         const { message } = response;
-        console.log(message)
         addMessageToRedux(message)
     };
     
     render(){
-        const { conversations, selectedConversation } = this.state;
+        const { conversations, selectedConversationId } = this.state;
         return(
            
         <>
@@ -62,8 +61,9 @@ class ConversationList extends Component{
                 <NewConversation/>
             </div>
             
-            {selectedConversation ? (
-                <Conversation selectedConversation={selectedConversation}/>
+            {selectedConversationId ? (
+                <Conversation selectedConversationId={selectedConversationId}/>
+        
             ):(
                 <div className="conversation">
                 <h4>please select a conversation on the left</h4>
@@ -83,7 +83,7 @@ const mapStateToProps =(state)=>{
 
 const listConversations = (conversations, handleClick) => {
     return conversations.map(convo => {
-        // console.log(convo)
+        
       return (
         <h5 key={convo.id} onClick={() => handleClick(convo.id)}>
           {convo.name}

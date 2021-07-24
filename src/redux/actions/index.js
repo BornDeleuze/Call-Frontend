@@ -56,7 +56,7 @@ export const addNewMessage = (newMessage) => {
 }
 export const addMessageToRedux = (newMessage) => {
     store.dispatch({
-    type: 'ADD_Message', payload: newMessage
+    type: 'ADD_MESSAGE', payload: newMessage
     })
 }
 

@@ -5,8 +5,8 @@ import { connect } from "react-redux"
 
 function Conversation(props) {
   
-    const selectedConvoIndex = props.selectedConversation - 1
-    
+    const selectedConvoIndex = props.selectedConversationId - 1
+
     const convo = props.messagePortal.conversations[selectedConvoIndex]
     
 

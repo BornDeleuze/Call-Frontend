@@ -10,15 +10,14 @@ class NewConversation extends React.Component {
             name: "Conversation Name"
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     
-
     handleChange(event) {
         console.log(event.target.value)
         this.setState({
             [event.target.name]: event.target.value
-        });
-        
+        }); 
       }
     
     handleSubmit=(event)=> {
