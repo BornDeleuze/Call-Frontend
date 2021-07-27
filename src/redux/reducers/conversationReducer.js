@@ -20,8 +20,6 @@ export default (state = [], action)=> {
             newState[selectedConvoIndex] = updatedConversation
             return newState
 
-            
-
         default: 
             return state
     }
