@@ -34,7 +34,7 @@ class Login extends React.Component {
         <div className="login_form">
             <form onSubmit={this.handleSubmit}>
                 <br></br>
-                <label>Please Log In</label>
+                <label>Please Enter Your Handle</label>
                 <br></br><br></br><br></br>
                 <input type="text" value={this.state.value} onChange={this.handleChange} />
                 

@@ -11,7 +11,6 @@ class ConversationList extends Component{
         super(props)
 
         this.state = {
-            // username: "",
             conversations: [],
             selectedConversationId: null,
             hello: ""
@@ -66,7 +65,7 @@ class ConversationList extends Component{
         
             ):(
                 <div className="conversation">
-                <h4>please select a conversation on the left</h4>
+                <h4>Select a conversation to the left, or create a new one at the bottom</h4>
                 </div>
             )}
         </>
@@ -76,7 +75,6 @@ class ConversationList extends Component{
 
 const mapStateToProps =(state)=>{
     return{ 
-            // conversationsPortal: state
             conversations: state.conversations
     }
 }

@@ -81,24 +81,32 @@ body{
 
 
 .conversation{
+  padding: 5px 5px 5px 5px;
   border-radius: 10px;
   float: right;
   min-width: 400px;
-  background-color:brown;
+  background-color: brown;
   overflow-y: scroll;
   top: 60px;
   bottom: 60px;
   height: 475px;
   margin-left: 175px;
-  scroll-snap-type: y proximity;
-  
+  scroll-snap-type: y proximity; 
+}
+.conversation h3{
+  text-align: center;
+}
+.message{
+  margin-top: 5px;
+  border-style: solid;
+  border-width: medium;
+  border-color: #3f3f3f;
+  border-radius: 5px;
 }
 .message_form {
   scroll-snap-align: end;
   
 }
-
-
 .convo_link{
   color: aliceblue;
 }

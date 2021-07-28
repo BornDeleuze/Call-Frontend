@@ -9,16 +9,13 @@ function Conversation(props) {
 
     const convo = props.messagePortal.conversations[selectedConvoIndex]
     
-
     const allMessages = convo.messages.map(message=>{
       return <Message key={message.id} data={message} /> 
     })
 
-    
-
-
     return (
       <div className="conversation">
+        <h3>{convo.name}</h3>
       
       {allMessages}
       <NewMessage selectedConvo={convo}/>
