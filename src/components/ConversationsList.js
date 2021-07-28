@@ -44,7 +44,7 @@ class ConversationList extends Component{
         const { conversations, selectedConversationId } = this.state;
         return(
            
-        <>
+        <div className="main">
             <div className="conversation_list">
                 
                 <ActionCableConsumer
@@ -68,7 +68,7 @@ class ConversationList extends Component{
                 <h4>Select a conversation to the left, or create a new one at the bottom</h4>
                 </div>
             )}
-        </>
+        </div>
         )
     }
 }

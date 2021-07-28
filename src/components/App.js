@@ -12,13 +12,9 @@ class App extends Component {
 
   constructor(props){
     super(props)
-
     this.state = {
-        // conversations: [],
-        
         user: this.props.user
     }  
-
   }
 
   render(){
@@ -27,26 +23,32 @@ class App extends Component {
       <>
         <Header/>
             <Switch>
+
               <Route exact path="/login">
                 <Login />
               </Route>
-
+              
               <Route exact path='/'>
+              
                 {this.props.user==="" ? <Redirect to=
                   {{
                   pathname: "/login",
                   state: { alert: "please log in" }
                   }}
                 />:null}
+                
                 <ConversationList className="sidebar"/>
+            
               </Route>
 
               <Route exact path='/about'>
                 <About/>
               </Route>
+
               <Route exact path='/logout'>
                   <Logout/>
               </Route>
+
             </Switch>
           <Footer/>
       </>

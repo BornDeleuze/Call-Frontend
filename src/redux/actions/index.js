@@ -1,4 +1,4 @@
-import { API_ROOT } from '/Users/mattb/Flatiron/code/Call/call/src/constants/index.js';
+import { API_ROOT, HEADERS } from '/Users/mattb/Flatiron/code/Call/call/src/constants/index.js';
 import store from '../store'
 
 
@@ -18,7 +18,7 @@ export const login =(username)=>{
     return(dispatch) => {
         return fetch('http://localhost:3000/users', {
             method: 'POST', 
-            headers: { 'Content-Type': 'application/json' }, 
+            headers: HEADERS, 
             body: JSON.stringify({name: username})
         })
         .then(response => response.json())
@@ -32,7 +32,7 @@ export const addNewConversation =(newConversation)=>{
     return(dispatch) => {
         return fetch('http://localhost:3000/conversations', {
             method: 'POST', 
-            headers: { 'Content-Type': 'application/json' }, 
+            headers: HEADERS, 
             body: JSON.stringify({conversation: newConversation})
         })        
     }
@@ -49,7 +49,7 @@ export const addNewMessage = (newMessage) => {
     return(dispatch) => {
         return fetch('http://localhost:3000/messages', {
             method: 'POST', 
-            headers: { 'Content-Type': 'application/json' }, 
+            headers: HEADERS, 
             body: JSON.stringify({message: newMessage})
         })
     }

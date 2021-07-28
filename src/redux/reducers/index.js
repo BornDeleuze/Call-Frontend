@@ -1,11 +1,9 @@
 import {combineReducers} from 'redux'
-// import messages from './messageReducer'
 import conversations from './conversationReducer'
 import login from './loginReducer'
 
 
 const appReducer =  combineReducers({
-    // messages,
 
     login,
 

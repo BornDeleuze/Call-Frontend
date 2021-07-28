@@ -6,13 +6,12 @@ const Cable = ({ conversations, handleReceivedMessage }) => {
   return (
     <div key="cablekey">
       {conversations.map(conversation => {
-        return (<>
+        return (
           <ActionCableConsumer
             key={conversation.id}
             channel={{ key: conversation.id, channel: 'MessagesChannel', id: conversation.id }}
             onReceived={(data) => handleReceivedMessage(data)}
           />
-        </>
         );
       })}
     </div>

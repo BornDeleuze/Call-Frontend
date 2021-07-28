@@ -1,7 +1,7 @@
 body{
   background-color:cadetblue;
-
 }
+
 .login_form{
   width:200px;
   height:200px;
@@ -52,17 +52,17 @@ body{
 }
 
 .conversation_list {
-  border-radius: 10px;
   font-family: "Courier New", "Lucida Console", monospace;
+  border-radius: 10px;
   padding: 5px 0 0 5px;
-  grid-area: sidebar;
   float: left;
   background-color: #3f3f3f;
-  position: fixed;
-  width: 150px;
   overflow-y: scroll;
   top: 60px;
   bottom: 63px;
+  position: fixed;
+  width: 150px;
+  grid-area: sidebar;
 }
 
 .conversation_list input{
@@ -81,21 +81,24 @@ body{
 
 
 .conversation{
-  padding: 5px 5px 5px 5px;
   border-radius: 10px;
-  float: right;
-  min-width: 400px;
+  padding: 5px 5px 5px 5px;
+  float: left;
   background-color: brown;
   overflow-y: scroll;
   top: 60px;
   bottom: 60px;
-  height: 475px;
+  min-height: 475px;
+  position: fixed;
   margin-left: 175px;
   scroll-snap-type: y proximity; 
+  min-width: 400px;
 }
+
 .conversation h3{
   text-align: center;
 }
+
 .message{
   margin-top: 5px;
   border-style: solid;
