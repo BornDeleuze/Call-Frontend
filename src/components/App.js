@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+
 import { Redirect, Switch, Route} from 'react-router-dom'
 import { connect } from "react-redux"
 import Header from './Header';
@@ -17,11 +18,17 @@ class App extends Component {
     }  
   }
 
+  
+
+  
+
   render(){
 
     return (
       <>
+      
         <Header/>
+        
             <Switch>
 
               <Route exact path="/login">

@@ -12,6 +12,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 ReactDOM.render(
   
   <React.StrictMode>
+  
     <ActionCableProvider url={API_WS_ROOT}>
       <Provider store={store}>
         <Router>
